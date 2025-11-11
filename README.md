@@ -35,20 +35,27 @@ El sitio permitirá a docentes acceder de manera rápida y organizada a informac
 2.2 Funcionalidad del producto
 
 -Navegación entre secciones del sitio para usuarios tales como profesores y administrativos.
+
 -Visualización de anuncios e información escolar.
+
 -Formulación de registro y contacto.
+
 -Acceso de documentación e información relevante.
 
 2.3 Características del usuario
 
 Alumnos: Podrán consultar horario de clases, materias y calificaciones.
+
 Docentes: Consultan y actualizan datos sobre sus materias y clases asignadas al igual que entrega de calificaciones.
+
 Administrativo Escolar: Encargarse de mandar la información necesaria para comunicados de la institución.
 
 2.4 Restricciones
 
 Alumnos: Podrán visualizar comunicados acerca de información o eventos escolares, checar calificaciones y/o comunicarse con profesores o tutorados, No podrán modificar contenido en el sitio.
+
 Docentes: Encargados para gestionar actividades del sistema selecionando a grupos, alumnos e informacion propia.
+
 Administrativo Escolar: Encargados de referenciar eventos y fechas importantes mediante comunicados a ambos alumnos y docentes.
 
 2.5 Evolución previsible del sistema
@@ -60,22 +67,30 @@ Este proyecto demuestra el uso integral de HTML, CSS y JavaScript aplicados al d
 3.1 Requisitos comunes de los interfaces
 
 -Creación de una interfaz intuitiva y visualmente atractiva usando HTML y CSS.
+
 -Implementar menús, secciones y navegación dinámica con JavaScript.
+
 -Mostrar información relevante sobre materias, calificaciones, horarios y docentes.
+
 -Adaptar el diseño a distintos dispositivos (computadora, tablet, móvil).
+
 -Simular una gestión básica de datos escolares mediante el uso de PHP y Base de Datos.
 
 3.2 Requisitos funcionales
 
 -El sistema deberá estar alojado a un servidor que lo soporte
+
 -Evitar acceso de secciones restringidas
+
 -Actualización sencilla de contenido
+
 -Copias de seguridad como respaldo de recuperación o almacenamiento en la nube.
 
 3.3 Requisitos No funcionales 
 
 Rendimiento
 -El sitio deberá cargar en menos de 5 segundos en una red estable.
+
 -Será compatible con pantallas/ventanas de diferentes tamaños.
 
 Seguridad
