@@ -1,0 +1,214 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Georgia', sans-serif;
+  background-color: #cce4f1;
+}
+
+/* Barra superior */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4c507e;
+  color: white;
+  padding: 40px 10px;
+}
+
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.titulo {
+  font-size: 2.5em;
+  font-weight: bold;
+  
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usuario img {
+  width: 39px;
+  height: 50px;
+  border-radius: 100%;  
+}
+
+/* Contenido principal */
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 50px;
+  gap: 30px;
+  position: relative;
+}
+
+/* Logo inclinado */
+.logo {
+  transform: none;
+}
+
+/* Menú principal */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  grid-column: span 2;
+}
+
+.menu .item {
+  width: 160px;
+  height: 60px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu .item:hover {
+  background-color: #b0c4de;
+  cursor: pointer;
+}
+
+/* Columnas */
+.columna-izquierda {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tarjeta {
+  width: 100%;
+  height: 180px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+
+/* Panel derecho */
+.columna-derecha {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.panel {
+  width: 80%;
+  height: 180px;
+  background-color: #d9d9d9;
+  border: 1px solid #4c507e;
+  border-radius: 6px;
+}
+
+/* Pie de página */
+.pie {
+  background-color: #4c507e;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+
+
+
+/* Tablas Horario */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background-color: #6f99cd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+th {
+    background-color: #384e67;
+    color: #000000;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #6a6acf;
+}
+
+tr:nth-child(even) {
+    background-color: #6f99cd;
+}
+
+tr:hover {
+    background-color: #354ca0;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+
+
+
+
+
+/* Navegación */
+nav {
+    background-color: #40687f;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid #2e6f94;
+}
+
+nav a {
+    color: #292828;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 1.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav a:hover {
+    background-color: #b70284;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* Párrafos y texto */
+p {
+    margin: 15px 0;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+em {
+    color: #ff02ee;
+    font-style: italic;
+}
+
+strong {
+    color: #0088ff;
+}
