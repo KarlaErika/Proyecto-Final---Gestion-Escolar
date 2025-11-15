@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Profesores - Gestión Escolar</title>
+    <link rel="stylesheet" href="Css/profesor.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+</head>
+
+<body>
+
+    <!-- Barra superior -->
+    <header class="topbar">
+        <div class="logo-box">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>School Gesture</span>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Buscar...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="user">
+            <span>Juan Pérez García</span>
+            <small>Profesor</small>
+            <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú -->
+    <nav class="menu">
+        <a class="active"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a><i class="fa-solid fa-users"></i> Alumnos</a>
+        <a><i class="fa-solid fa-user-tie"></i> Personal</a>
+        <a><i class="fa-solid fa-file-lines"></i> Trámites</a>
+        <a><i class="fa-solid fa-comments"></i> Contactar</a>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+
+        <!-- Avisos -->
+        <section class="card large">
+            <h3><i class="fa-solid fa-bullhorn"></i> Avisos Importantes</h3>
+
+            <div class="notice">
+                <div class="line"></div>
+                <div>
+                    <h4>Entrega de calificaciones</h4>
+                    <p>Las calificaciones del parcial estarán disponibles el día 25 de noviembre.</p>
+                    <small>Mtra. Ana Martínez</small>
+                </div>
+            </div>
+
+            <div class="notice">
+                <div class="line red"></div>
+                <div>
+                    <h4>Suspensión de clases</h4>
+                    <p>Se suspenden las clases el día 20 de noviembre por festividad nacional.</p>
+                    <small>Dr. Roberto González</small>
+                </div>
+            </div>
+
+            <div class="notice">
+                <div class="line"></div>
+                <div>
+                    <h4>Entrega de calificaciones</h4>
+                    <p>Las calificaciones estarán disponibles el día 25 de noviembre.</p>
+                    <small>Mtra. Ana Martínez</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Eventos -->
+        <section class="card medium">
+            <h3><i class="fa-solid fa-calendar-days"></i> Eventos</h3>
+
+            <div class="event">
+                <h4>Junta de Padres</h4>
+                <p>Reunión con padres de familia</p>
+                <small>2025-11-25 • 16:00</small>
+            </div>
+
+            <div class="event">
+                <h4>Junta de Padres</h4>
+                <p>Reunión con padres de familia</p>
+                <small>2025-11-25 • 16:00</small>
+            </div>
+
+            <div class="event">
+                <h4>Examen Final</h4>
+                <p>Examen final de Matemáticas</p>
+                <small>2025-11-30 • 10:00</small>
+            </div>
+
+            <div class="event">
+                <h4>Examen Final</h4>
+                <p>Examen final de Matemáticas</p>
+                <small>2025-11-30 • 10:00</small>
+            </div>
+
+        </section>
+
+        <!-- Notas + Chat -->
+        <div class="right-column">
+
+            <!-- Bloc de notas -->
+            <section class="card small">
+                <h3><i class="fa-solid fa-square-check"></i> Bloc de Notas</h3>
+
+                <div class="note-input">
+                    <input type="text" placeholder="Nueva nota...">
+                    <button class="add-btn">+</button>
+                </div>
+
+                <div class="note-item">
+                    <input type="checkbox">
+                    <button class="del-btn">✕</button>
+                </div>
+
+            </section>
+
+            <!-- Chat -->
+            <section class="card small">
+                <h3><i class="fa-solid fa-comment-dots"></i> Chat</h3>
+
+                <div class="chat-input">
+                    <input type="text" placeholder="Escribe un mensaje...">
+                    <button class="send-btn">Enviar</button>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="Java/script.js"></script>
+
+
+</body>
+</html>
