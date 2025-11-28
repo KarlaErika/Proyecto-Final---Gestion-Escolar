@@ -1,0 +1,818 @@
+:root {
+    /* Define variables de color para uso consistente en todo el CSS. */
+    --color-blue-dark: #1b4f72; /* Color principal del header y botones inactivos/Info Personal/Contactar */
+    --color-blue-medium: #74B4D2 ; /* Color de fondo de las secciones / Color de Inicio activo */
+    --color-blue-light: #C9DFEB; /* Color de fondo principal del dashboard */
+    --color-pink: #F8ECEC; 
+    --color-pink-item: #f7a8b0;
+    --color-red: #d9534f;
+    --color-white: #F8ECEC;
+    --color-gray-light: #f5f5f5;
+    --color-green-light: #186F61;
+    
+    /* Variables de color para la barra de navegación. */
+    --color-nav-background: #5d7fb7; 
+    --color-nav-button: #7b96d0;
+    --color-nav-active: #4a759e; /* Color para el botón 'Inicio' activo */
+}
+
+/* Estilos Globales */
+/* Resetea los márgenes y paddings por defecto del navegador y establece el modelo de caja. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos aplicados al cuerpo de la página. */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-blue-light);
+    color: #333;
+}
+
+/* 1. Header (Encabezado) */
+/* Contenedor principal de la cabecera. Usa Flexbox para alinear el logo y el perfil. */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--color-blue-dark);
+    color: var(--color-white);
+}
+
+/* ACOMODO DE LOGO */
+/* Contenedor del logo y el texto. */
+.logo-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+}
+
+/* ESTILO AÑADIDO PARA LA IMAGEN */
+/* Define las dimensiones y el estilo de la imagen del logo. */
+.logo-img {
+    height: 70px; /* Ajusta la altura de la imagen según sea necesario */
+    width: 68px;
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+    border-radius: 30%;
+    border: 1px solid black;
+
+}
+
+/* Contenedor del perfil, clave para el posicionamiento absoluto del menú desplegable. */
+.profile-wrapper {
+    position: relative; /* 🚨 CLAVE: Punto de referencia para el menú (profile-actions) 🚨 */
+    display: flex;
+    align-items: center;
+}
+
+/* Contiene la foto y el texto del usuario. */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+/* Contenedor del texto (Usuario / Alumno). */
+.user-text {
+    display: flex;
+    flex-direction: column; /* Coloca el texto en dos líneas */
+    text-align: right;
+    line-height: 1.1; /* Espacio reducido entre líneas */
+    margin-right: 15px; /* Espacio entre el texto y el avatar */
+}
+
+/* Estilo para el nombre principal del usuario. */
+.user-name {
+    font-size: 20px; /* Tamaño más grande para "Usuario" */
+    font-weight: 500;
+    display: block;
+}
+
+/* Estilo para el rol secundario (Alumno, Administrativo, etc.). */
+.user-sub-role {
+    font-size: 16px; /* Tamaño más pequeño para "Alumno" */
+    font-weight: 300;
+    display: block;
+    opacity: 0.9;
+}
+
+/* (Reglas antiguas, no usadas en el código limpio) */
+.user-role {
+    display: block;
+    line-height: 1.2;
+    font-size: 14px;
+    
+}
+
+/* (Reglas antiguas, no usadas en el código limpio) */
+.sub-role {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* (Reglas antiguas, posiblemente reemplazadas por .profile-picture) */
+.user-avatar-new {
+    /* Color de fondo del círculo (morado claro) */
+    background-color: #c9b0e2; 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* Centrar el icono de persona dentro del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* El icono de persona debe ser de un morado más oscuro */
+    color: #8c78b4; 
+    font-size: 24px; /* Tamaño del icono */
+    /* Sombra exterior sutil para el efecto de profundidad */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+    
+}
+
+/* Foto de Perfil (Activador del Menú) */
+.profile-picture {
+    width: 70px;
+    height: 70px;
+    background-color: #d8b2e5; 
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; 
+    cursor: pointer; /* Indica al usuario que es clicable */
+    
+}
+
+/* Genera el icono de persona (👤) dentro del círculo. */
+.profile-picture::before {
+    content: '👤'; 
+    font-size: 40px;
+    color: white;
+    
+}
+
+/* Contenedor del menú desplegable (Recibir Ayuda, Cerrar Sesión). */
+.profile-actions {
+    background-color: #1b4f72; 
+    
+    /* 1. CLAVE DE POSICIONAMIENTO: Flota por encima del contenido y no lo empuja. */
+    position: absolute; 
+    top: 100%; /* Inicia justo debajo del profile-wrapper */
+    right: 0;  /* Alinea a la derecha de profile-wrapper */
+    width: 180px; /* Ancho fijo para el menú */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+
+    /* 2. CLAVE DE ANIMACIÓN: Cerrado por defecto. */
+    max-height: 0;
+    overflow: hidden; /* Oculta el contenido fuera del max-height */
+    padding: 0 15px; /* Padding vertical inicial de 0 */
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; /* Define la transición suave */
+    border-radius: 0px 0px 8px 8px; /* Redondeado solo en la parte inferior */
+}
+
+/* 3. CLASE PARA ABRIR EL MENÚ (Activada por JavaScript). */
+.profile-actions.open {
+    max-height: 400px; /* Valor suficiente para que quepa el contenido */
+    padding: 10px 15px; /* Restablece el padding vertical para mostrar los botones */
+}
+
+/* Estilo para los botones dentro del menú desplegable. */
+.action-button {
+    display: flex;
+    align-items: center;
+    background-color: #4a7bb2; 
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+/* Efecto visual al pasar el ratón por encima del botón. */
+.action-button:hover {
+    background-color: #5c8fc7; 
+}
+
+/* Contenedor de los iconos dentro de los botones. */
+.button-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px; 
+    flex-shrink: 0;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilo específico para el icono de "Recibir Ayuda". */
+.button-icon.help {
+    background-color: white;
+    color: black;
+}
+/* Genera el contenido del icono de "Ayuda" (?). */
+.button-icon.help::before {
+    content: '?';
+    font-size: 20px;
+}
+
+/* Estilo específico para el icono de "Cerrar Sesión". */
+.button-icon.logout {
+    background-color: black; 
+}
+/* Genera el contenido del icono de "Cerrar Sesión" (flecha). */
+.button-icon.logout::before {
+    content: '➔'; 
+    font-size: 20px;
+    transform: rotate(180deg); /* Rota la flecha para que apunte hacia afuera */
+}
+
+/* 2. Navigation (Menú Principal) - AJUSTADO */
+/* Contenedor de los botones principales de navegación del dashboard. */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-nav-background); 
+    padding: 10px 0; /* Agrega padding vertical para el estilo de barra */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilo base para cada botón de navegación. */
+.nav-button {
+    flex-grow: 1;
+    max-width: 180px; 
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--color-nav-button); 
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+
+/* Efecto hover para botones inactivos. */
+.nav-button:hover:not(.active):not(.empty) {
+    background-color: #658ac0;
+}
+
+/* Estilo para el botón de navegación activo (ej: "Inicio"). */
+.nav-button.active {
+    background-color: var(--color-nav-active); 
+}
+
+/* Estilo para un botón que está vacío o deshabilitado visualmente. */
+.nav-button.empty {
+    background-color: var(--color-nav-background);
+    cursor: default;
+    box-shadow: none;
+}
+
+/* 3. Dashboard Content (Contenido Principal) */
+/* Contenedor principal de las tarjetas del dashboard. Usa Flexbox para las columnas. */
+.dashboard-content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1800px;
+    max-height: 1500px;
+    margin: 0 auto; /* Centrar el contenido */
+}
+
+/* Estilo base para todas las tarjetas (Avisos, Eventos, Notas, Mensajes). */
+.card {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 350px;
+}
+
+/* Estilo para las tarjetas más anchas (Avisos y Eventos). */
+.wide-card {
+    flex: 1 1 30%; /* Ocupa una parte significativa del ancho. */
+    background-color: var(--color-white);
+}
+
+/* Título estándar de las tarjetas. */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--color-blue-dark);
+}
+
+/* Estilo para elementos de relleno o marcadores de posición. */
+.placeholder {
+    background-color: var(--color-gray-light);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Altura específica para marcadores de Avisos y Eventos. */
+.notices-card .placeholder,
+.events-card .placeholder {
+    height: 90px;
+}
+
+/* Columna Derecha (Bloc de Notas y Mensajes) */
+/* Contenedor de la columna lateral. Usa Flexbox vertical. */
+.right-column {
+    flex: 1 1 30%; /* Tercera columna, generalmente más estrecha. */
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    gap: 20px;
+}
+
+/* 3.1 Bloc de Notas */
+/* Estilo específico para la tarjeta de notas. */
+.notes-card {
+    background-color: var(--color-pink);
+    padding: 15px;
+}
+.notes-input-group{
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.note-input{
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+}
+#notes-container{
+    max-height: 300px;
+    overflow-y: auto;
+}
+.note-item{
+    display: flex;
+    align-items: center;
+    background-color: var(--color-pink-item);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+.note-item:hover{
+    background-color: #f5a8af;
+}
+.note-checkbox{
+    margin-right: 0;
+    accent-color: var(--color-red);
+    cursor: pointer;
+}
+.note-date{
+    font-size: 10px;
+    color: #888;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+.note-text{
+    flex-grow: 1;
+    margin-right: 0;
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.note-text.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+    color: #666;
+}
+
+.delete-note-btn {
+    background: none;
+    border: none;
+    color: var(--color-red);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.delete-note-btn:hover {
+    background-color: var(--color-red);
+    color: white;
+}
+
+.no-notes-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Botón para añadir una nueva nota. */
+.add-note-btn {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Estilo para cada elemento individual de la lista de notas. */
+.note-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-pink-item);
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Estilo para la casilla de verificación (checkbox) de la nota. */
+.note-item input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--color-red); 
+}
+
+/* Etiqueta del texto de la nota. */
+.note-item label {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+/* Botón para eliminar una nota. */
+.delete-note-btn {
+    background: none;
+    border: none;
+    color: var(--color-red);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* 3.2 Mensajes Recibidos */
+/* Estilo específico para la tarjeta de mensajes. */
+
+.messages-card {
+    flex-grow: 1; 
+    min-height: 0px; 
+}
+
+/* Encabezado clicable de la tarjeta de mensajes. */
+.messages-header {
+    background-color: var(--color-blue-medium);
+    color: var(--color-green-light);
+    padding: 10px;
+    margin: -15px -15px 15px -15px; /* Extiende el color al ancho de la tarjeta. */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Cuerpo donde se muestran los mensajes (no usa max-height/transition, usa display). */
+.messages-body {
+    background-color: var(--color-gray-light);
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+/* Etiqueta numérica para notificaciones (ej: "9+"). */
+.badge {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Contenido de los mensajes: Oculto por defecto (no animado). */
+#messages-body-content {
+    display: none !important; /* Forzado a ocultarse inicialmente */
+    transition: all 0.3s ease; /* Opcional: añade una transición suave (pero display: none la anula) */
+}
+
+/* Muestra el contenido de los mensajes cuando se le añade esta clase. */
+#messages-body-content.messages-expanded {
+    display: block !important;
+}
+
+/* ---------------------- Estilos para Pestañas de Grupos ---------------------- */
+
+/* Contenedor que alinea las pestañas horizontalmente (fila) */
+.horizontal-tabs-container {
+    display: flex; 
+    margin-bottom: 0; /* Evita el margen extra entre las pestañas y el contenido */
+    overflow-x: auto; /* Permite desplazamiento si hay demasiadas pestañas */
+    white-space: nowrap; /* Evita que las pestañas salten de línea */
+    border-bottom: 1px solid #c9dfeb; /* Línea que separa las pestañas del contenido */
+    background: #f8f9fa;
+
+}
+.horizontal-tabs-container .seccion-header {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    margin-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.horizontal-tabs-container .seccion-header:hover {
+    background-color: #e9ecef;
+}
+
+/* ---------------------- Estilos para Plantilla Docente/Admin ---------------------- */
+
+/* Fila Docente: Contenedor principal para las dos columnas */
+.fila-docente {
+    display: flex;
+    gap: 20px;
+    /* Ajusta la altura si es necesario, pero debería ser flexible */
+}
+
+/* Columna Izquierda: Contiene 5 cajas apiladas */
+.columna-izquierda {
+    flex: 1; /* Ocupa la mitad del espacio horizontal */
+    display: flex;
+    flex-direction: column; /* Apila las cajas verticalmente */
+    gap: 20px;
+}
+
+/* Columna Derecha: Contiene 3 cajas apiladas */
+.columna-derecha {
+    flex: 1; /* Ocupa la otra mitad del espacio horizontal */
+    display: flex;
+    flex-direction: column; /* Apila las cajas verticalmente */
+    gap: 20px;
+}
+
+/* Estilo base para las cajas grandes de la versión 2 */
+.caja-grande-v2 {
+    background-color: #d1e3f0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-height: 50px; /* Altura mínima de seguridad */
+    display: flex; /* Para centrar el texto verticalmente si es necesario */
+    align-items: center; 
+}
+
+/* Altura Doble (Debe ocupar aproximadamente 2/5 de la altura total de la columna) */
+.altura-doble {
+    /* Calculo: (100% - 4 * 20px de gap) / 5 segmentos * 2 segmentos + 20px de gap */
+    /* Lo establecemos con flex-grow para que se ajuste automáticamente */
+    flex-grow: 2; 
+    flex-basis: 0;
+}
+
+/* Altura Simple (Debe ocupar aproximadamente 1/5 de la altura total de la columna) */
+.altura-simple {
+    flex-grow: 1; 
+    flex-basis: 0;
+}
+
+/* Aseguramos que los campos de la izquierda ocupen 1/5 de su columna */
+.campo-docente {
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: #d1e3f0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Estilo para el contenedor de la cuadrícula de información personal. */
+.info-personal-grid-container{
+    background-color: #faecec;
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid black;
+
+    
+}
+
+/* Estilo para cada fila dentro de la cuadrícula de información. */
+.fila {
+    display: flex;
+    gap: 20px;
+    
+    margin-bottom: 20px;
+}
+
+/* Estilo base para cada campo de información (cajas de datos). */
+.campo {
+    flex: 1;
+    background-color: #d1e3f0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid black;
+
+}
+
+/* Estilo para campos de información más pequeños. */
+.campo-peque {
+    flex: 1;
+    background-color: #d1e3f0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+/* Estilo para una caja de texto grande dentro de la información personal. */
+.caja-grande {
+    flex: 1;
+    background-color: #d1e3f0;
+    height: 220px;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: bold;
+    border: 1px solid black;
+
+}
+.vertical-stack-container {
+     /* Ocupa 1/4 del espacio disponible, como los otros elementos de la fila */
+    
+    /* Configuración para apilar los hijos verticalmente */
+    display: flex;
+    flex-direction: column; 
+    
+    /* Dado que los hermanos .caja-grande tienen height: 220px, este contenedor se estira. */
+    width: 500px;
+    height: 215px; /* Asegura que la altura coincida con .caja-grande */
+    gap: 10px; /* Espacio entre los elementos 'Grupo' y 'Aula' */
+    padding: 0; /* Asegura que el padding interno no interfiera con el borde */
+}
+
+/* Estilo para los campos internos (Grupo y Aula) */
+.campo-vertical {
+    flex: 1; /* ¡CLAVE! Hace que cada uno ocupe la mitad del espacio vertical del contenedor */
+    background-color: #d1e3f0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+
+/*--------------------------------------------------------------*/
+/*----------------------Consultar- Contactar------------------------------*/
+/*--------------------------------------------------------------*/
+
+
+/* Estilo para el texto de tamaño grande. */
+.tamano{
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: bold;
+    
+}
+
+/* Contenedor de texto con espaciado y opacidad. */
+.espacio{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.1;
+    opacity: 0.5;
+    font-size: 17px;
+}
+
+/* Contenedor principal de la sección de Contactar/Consultar. */
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Encabezado clicable de las subsecciones de Contactar/Consultar (Docentes, Alumnos, etc.). */
+.seccion-header {
+    flex: 1;
+    background-color: #f0f8ff; 
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: 0.5s ;
+    border: 1px solid black;
+}
+
+/* Efecto hover para el encabezado de las subsecciones. */
+.seccion-header:hover {
+    background-color: #e0f0ff;
+}
+
+/* Efecto hover para el encabezado general (si existiera). */
+#general-header:hover {
+    background-color: #5a85b9;
+}
+
+/* Contenedor del contenido de las subsecciones (inicialmente oculto). */
+.seccion-contenido {
+    padding: 15px 0;
+    display: none; /* Inicialmente oculto por defecto */
+}
+
+/* Cuadrícula para mostrar la lista de contactos o información general. */
+.general-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 10px;
+    
+}
+
+/* Tarjeta individual dentro de la cuadrícula de información. */
+.general-card {
+    background-color: #e6f3ff; 
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+/* Texto resaltado dentro de la tarjeta general. */
+.general-card strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Clase para forzar la visualización de un elemento (usada por JavaScript). */
+.show {
+    display: block !important; 
+}
+
+/* Estilo para el encabezado cuando está activo/seleccionado. */
+.active-header {
+    border-left: 5px solid #2a72b2; 
+    background-color: #e0f0ff;
+    color: #1a4a75; 
+    padding-left: 10px; 
+}
+
+ 
+
+/* Media Query para responsividad (2 columnas en pantallas pequeñas) */
+@media (max-width: 600px) {
+    /* Ajusta la cuadrícula de docentes a 2 columnas. */
+    .docentes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Responsive: Ajustes para pantallas más pequeñas (opcional, pero buena práctica) */
+@media (max-width: 900px) {
+    /* En pantallas medianas, apila las columnas verticalmente. */
+    .dashboard-content {
+        flex-direction: column;
+    }
+
+    /* Las tarjetas anchas ocupan todo el ancho. */
+    .wide-card {
+        flex: 1 1 100%;
+    }
+
+    /* La columna derecha ocupa todo el ancho. */
+    .right-column {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* En pantallas pequeñas, la lista de alumnos se reduce a 1 columna. */
+    .lista-alumnos {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Pequeño ajuste de padding en el contenido activo para móviles. */
+    .contenido.activo {
+        padding: 10px;
+    }
+}
