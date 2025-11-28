@@ -1,0 +1,141 @@
+/* --- Fondo degradado --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #dbe7f9, #eef5ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error-text{
+    color: #d9534f; /* Rojo de alerta */
+    font-size: 13px;
+    margin-top: -15px; /* Sube el mensaje para pegarlo al input */
+    margin-bottom: 10px;
+    text-align: left;
+    height: 15px; /* Reserva espacio para el mensaje y evitar saltos */
+}
+input.input-error {
+    border: 1px solid #d9534f; /* Borde rojo */
+    background: #fff4f4; /* Fondo rojo muy claro */
+}
+
+/* Barra superior */
+.top-bar {
+    background: #3d4754;
+    height: 40px;
+}
+
+/*FONDO*/
+.login-container {
+    width: 430px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+/*TAMAÑO DE FONDO*/
+.form-content {
+    padding: 30px;
+    text-align: center;
+}
+/*LOGO*/
+.logo-box {
+    width: 150px;
+    height: 170px;
+    border: 20px solid #dce3ef;
+    border-radius: 100px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para que la imagen no se salga */
+}
+.logo-img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* LETRAS*/
+
+h2 {
+    margin: 10px 0 20px;
+    font-size: 26px;
+    color: #2d2d2d;
+}
+
+/* Selector de roles */
+.role-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    gap: 10px
+}
+
+.role {
+    width: 48%;
+    padding: 12px;
+    border: 1px solid #d9dfea;
+    background: #f5f8ff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.role i {
+    font-size: 20px;
+}
+
+.role.active {
+    border: 2px solid #2e65f3;
+    background: #e9f0ff;
+    color: #2e65f3;
+}
+
+/* Inputs */
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    color: #555;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f3f4f7;
+    border: 1px solid #dce3ef;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+/* Botón */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: #1e4ec7;
+}
+
